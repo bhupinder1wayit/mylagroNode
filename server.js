@@ -16,10 +16,10 @@ io.on('connection', function(socket){
     socket.join(roomName);
   });
 
-  socket.on('sendchat', function(data) {
+  socket.on('sendchat', function(data,file) {
 
-    io.sockets["in"](socket.room).emit('updatechat', socket.room,socket.sender,socket.receiver, data);
-    io.emit('allusermessage', socket.room,socket.sender,socket.receiver, data);
+    io.sockets["in"](socket.room).emit('updatechat', socket.room,socket.sender,socket.receiver, data,file);
+    io.emit('allusermessage', socket.room,socket.sender,socket.receiver, data,file);
   });
 
   socket.on('showtyping', function(roomName , sender) {
